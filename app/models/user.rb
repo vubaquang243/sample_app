@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save :bf_save
   validates :name,  presence: true, length:{maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length:{maximum:255},
@@ -7,7 +8,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length:{minimum: 6}
 
+  private
   def bf_save
-    before_save { email.downcase! }
+    email.downcase!
   end
 end
