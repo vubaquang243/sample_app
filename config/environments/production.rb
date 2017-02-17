@@ -15,7 +15,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   host = "stormy-beyond-20447.herokuapp.com"
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_url_options = {host: host}
   action_mailerr::Base.smtp_settings = {
     address: "smtp.sendgrid.net",
     port: "587",
@@ -88,9 +88,9 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new STDOUT
     logger.formatter = config.log_formatter
-    config.logger = ActiveSupport::TaggedLogging.new(logger)
+    config.logger = ActiveSupport::TaggedLogging.new logger
   end
 
   # Do not dump schema after migrations.
